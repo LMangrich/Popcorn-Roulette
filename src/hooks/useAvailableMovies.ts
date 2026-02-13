@@ -4,22 +4,39 @@ import type { FilterState } from './useMovieRoulette';
 import { convertToApiFilters } from '../utils/filterConverter';
 
 export const useAvailableMovies = (filters: FilterState) => {
-  const [availableCount, setAvailableCount] = useState<number>(0);
+  const [availableCount, setAvailableCount] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    let cancelled = false;
+    
     const fetchCount = async () => {
+      if (!cancelled) {
+        setIsLoading(true);
+      }
+      
       try {
         const apiFilters = convertToApiFilters(filters);
         const result = await apiClient.getAvailableCount(apiFilters);
-        setAvailableCount(result.total);
+        if (!cancelled) {
+          setAvailableCount(result.total);
+          setIsLoading(false);
+        }
       } catch (error) {
         console.error('Error fetching movie count:', error);
-        setAvailableCount(0);
+        if (!cancelled) {
+          setAvailableCount(0);
+          setIsLoading(false);
+        }
       }
     };
 
     fetchCount();
+    
+    return () => {
+      cancelled = true;
+    };
   }, [filters]);
 
-  return availableCount;
+  return isLoading ? null : availableCount;
 };

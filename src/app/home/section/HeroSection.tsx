@@ -9,7 +9,7 @@ interface HeroSectionProps {
   onSpin: () => void;
   isSpinning: boolean;
   isSelected: boolean;
-  availableCount: number;
+  availableCount: number | null;
 }
 
 export function HeroSection({ filters, setFilters, onSpin, isSpinning, isSelected, availableCount }: HeroSectionProps) {

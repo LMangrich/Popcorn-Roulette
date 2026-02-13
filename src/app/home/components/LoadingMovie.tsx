@@ -2,7 +2,7 @@ import { Ticket } from "lucide-react";
 
 interface LoadingMovieProps {
   isSpinning: boolean;
-  availableCount: number;
+  availableCount: number | null;
 }
 
 export function LoadingMovie({ isSpinning }: LoadingMovieProps) {

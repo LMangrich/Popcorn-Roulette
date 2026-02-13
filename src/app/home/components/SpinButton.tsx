@@ -2,7 +2,7 @@ interface SpinButtonProps {
   onClick: () => void;
   isSpinning: boolean;
   disabled?: boolean;
-  availableCount: number;
+  availableCount: number | null;
 }
 
 export function SpinButton({ onClick, isSpinning, disabled, availableCount }: SpinButtonProps) {
@@ -34,7 +34,7 @@ export function SpinButton({ onClick, isSpinning, disabled, availableCount }: Sp
 
       <div className="flex items-center gap-2 text-red-dark">      
         <span className="text-sm font-bold">
-         {availableCount} filme{availableCount !== 1 ? "s" : ""} no balde!
+         {availableCount === null ? "Verificando quantos filmes há filmes no balde..." : `${availableCount} filme${availableCount !== 1 ? "s" : ""} no balde!`}
         </span>
       </div>
     </div>
