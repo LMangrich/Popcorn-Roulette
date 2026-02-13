@@ -1,27 +1,4 @@
-export interface Movie {
-  id: number;
-  title_pt_br: string;
-  title: string;
-  originalTitle?: string;
-  countries: string[];
-  ageRating: string;
-  genres: string[];
-  imdbRating?: string;
-  duration?: number;
-  year?: number;
-  directors: string[];
-  cast: Array<{ name: string; role: string }>;
-  whereToWatch: string[];
-  posterUrl?: string;
-  synopsis?: string;
-  backdrop?: string;
-  rating?: number;
-  moods?: string[];
-  language?: string;
-  certification?: string;
-  poster?: string;
-  director?: string;
-}
+export type { Movie } from '@/lib/api';
 
 export const GENRE_MAP: Record<string, string> = {
   "Ação": "Action",

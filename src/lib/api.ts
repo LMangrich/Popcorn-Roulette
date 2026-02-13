@@ -1,7 +1,7 @@
 const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-export interface MovieFilters {
+export type MovieFilters = {
   countries?: string[];
   ageRating?: string;
   genres?: string[];
@@ -14,10 +14,10 @@ export interface MovieFilters {
   whereToWatch?: string[];
 }
 
-export interface Movie {
+export type Movie = {
   id: number;
   title: string;
-  originalTitle?: string;
+  title_pt_br: string;
   countries: string[];
   ageRating: string;
   genres: string[];
@@ -31,12 +31,11 @@ export interface Movie {
   synopsis?: string;
   backdrop?: string;
   rating?: number;
-  moods?: string[];
   language?: string;
   certification?: string;
   poster?: string;
   director?: string;
-}
+};
 
 export interface PaginatedResponse<T> {
   movies: T[];
