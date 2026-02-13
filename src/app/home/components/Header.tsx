@@ -6,7 +6,7 @@ export function Header() {
       <div className="max-w-3xl mx-auto flex items-center justify-between px-4 py-3"> 
         <div className="flex-1"/>
         
-        <a href="/" className="flex justify-center"> 
+        <a href="/Popcorn-Roulette" className="flex justify-center"> 
           <Popcorn className="h-10 w-10 text-popcorn" /> 
         </a> 
 
