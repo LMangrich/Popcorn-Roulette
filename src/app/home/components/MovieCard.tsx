@@ -35,7 +35,7 @@ export function MovieCard({ movie, onClose, similarMovies, onSelectSimilar, onSp
         <div className="relative h-48 md:h-72 overflow-hidden shadow-[1px_2px_4px_2px_rgba(0,0,0,0.1)]">
           <img
             src={movie.backdrop || movie.posterUrl}
-            alt={movie.title}
+            alt={movie.title_pt_br}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-transparent" />
@@ -56,7 +56,7 @@ export function MovieCard({ movie, onClose, similarMovies, onSelectSimilar, onSp
           <div className="absolute -bottom-6 left-6 md:left-8">
             <img
               src={movie.poster || movie.posterUrl}
-              alt={movie.title}
+              alt={movie.title_pt_br}
               className="w-24 md:w-32 h-auto rounded-[20px] shadow-[1px_2px_0px_0px_rgba(0,0,0,0.1)] border-4 border-card"
             />
           </div>
@@ -65,7 +65,7 @@ export function MovieCard({ movie, onClose, similarMovies, onSelectSimilar, onSp
         <div className="pt-8 px-6 md:px-8 pb-6 md:pb-8">
           <div className="mb-5 flex flex-col gap-4">
             <h1 className="font-display text-3xl -translate-x-0.5 md:text-5xl font-bold text-left">
-              {movie.title}
+              {movie.title_pt_br}
             </h1>
 
             <div className="flex flex-row items-center gap-3 text-sm">

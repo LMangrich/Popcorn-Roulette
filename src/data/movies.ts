@@ -1,5 +1,6 @@
 export interface Movie {
   id: number;
+  title_pt_br: string;
   title: string;
   originalTitle?: string;
   countries: string[];
