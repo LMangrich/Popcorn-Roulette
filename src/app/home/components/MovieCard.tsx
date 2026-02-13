@@ -1,11 +1,8 @@
 import { Clock, Star, Play, X, Monitor, Globe, Shield, Clapperboard, Users, Popcorn } from "lucide-react";
-import { useState, useEffect } from "react";
 import type { Movie } from "@/data/movies";
 import { GENRE_MAP_REVERSE, PLATFORM_URLS } from "@/data/movies";
 import { Badge } from "@/app/home/components/Badge";
 import { Button } from "@/app/home/components/Button";
-import { translateSynopsis } from "@/lib/translator";
-
 interface MovieCardProps {
   movie: Movie;
   onClose: () => void;
@@ -15,13 +12,6 @@ interface MovieCardProps {
 }
 
 export function MovieCard({ movie, onClose, similarMovies, onSelectSimilar, onSpinAgain }: MovieCardProps) {
-  const [translatedSynopsis, setTranslatedSynopsis] = useState<string>(movie.synopsis || '');
-
-  useEffect(() => {
-    if (movie.synopsis) {
-      translateSynopsis(movie.synopsis).then(setTranslatedSynopsis);
-    }
-  }, [movie.synopsis]);
 
   const formatDuration = (minutes: number) => {
     const hours = Math.floor(minutes / 60);
@@ -100,9 +90,9 @@ export function MovieCard({ movie, onClose, similarMovies, onSelectSimilar, onSp
             ))}
           </div>
 
-          {movie.synopsis && (
+          {(movie.synopsisPtBr || movie.synopsis) && (
             <div className="mb-5 text-left">
-              <p>{translatedSynopsis}</p>
+              <p>{movie.synopsisPtBr || movie.synopsis}</p>
             </div>
           )}
 

@@ -29,6 +29,7 @@ export type Movie = {
   whereToWatch: string[];
   posterUrl?: string;
   synopsis?: string;
+  synopsisPtBr?: string;
   backdrop?: string;
   rating?: number;
   language?: string;

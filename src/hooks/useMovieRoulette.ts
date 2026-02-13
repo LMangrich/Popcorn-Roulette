@@ -5,8 +5,8 @@ import { convertToApiFilters } from '../utils/filterConverter';
 
 export interface FilterState {
   genres: string[];
-  yearRange: { min: number; max: number };
-  durationRange: { min: number; max: number };
+  yearRanges: string[];
+  durationRanges: string[];
   platforms: string[];
   minRating: number;
   languages: string[];

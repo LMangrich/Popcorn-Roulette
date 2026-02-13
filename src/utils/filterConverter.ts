@@ -1,6 +1,6 @@
 import type { MovieFilters } from '../lib/api';
 import type { FilterState } from '../hooks/useMovieRoulette';
-import { GENRE_MAP, COUNTRY_MAP } from '../data/movies';
+import { GENRE_MAP, COUNTRY_MAP, yearRanges, durationRanges } from '../data/movies';
 
 export const convertToApiFilters = (frontendFilters: FilterState): MovieFilters => {
   const apiFilters: MovieFilters = {};
@@ -15,14 +15,20 @@ export const convertToApiFilters = (frontendFilters: FilterState): MovieFilters 
     apiFilters.minRating = frontendFilters.minRating;
   }
 
-  if (frontendFilters.yearRange.min !== 1940 || frontendFilters.yearRange.max !== 2026) {
-    apiFilters.minYear = frontendFilters.yearRange.min;
-    apiFilters.maxYear = frontendFilters.yearRange.max;
+  if (frontendFilters.yearRanges.length > 0) {
+    const selectedRange = yearRanges.find(r => r.label === frontendFilters.yearRanges[0]);
+    if (selectedRange) {
+      apiFilters.minYear = selectedRange.min;
+      apiFilters.maxYear = selectedRange.max;
+    }
   }
 
-  if (frontendFilters.durationRange.min !== 0 || frontendFilters.durationRange.max !== 999) {
-    apiFilters.minDuration = frontendFilters.durationRange.min;
-    apiFilters.maxDuration = frontendFilters.durationRange.max;
+  if (frontendFilters.durationRanges.length > 0) {
+    const selectedRange = durationRanges.find(r => r.label === frontendFilters.durationRanges[0]);
+    if (selectedRange) {
+      apiFilters.minDuration = selectedRange.min;
+      apiFilters.maxDuration = selectedRange.max;
+    }
   }
 
   if (frontendFilters.platforms.length > 0) {

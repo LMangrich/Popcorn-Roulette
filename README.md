@@ -15,7 +15,6 @@ Popcorn Roulette é uma aplicação web que te ajuda a descobrir filmes de forma
 - **Seleção Aleatória de Filmes** com filtros personalizáveis
 - **Filtros Avançados**: gêneros, período, duração, plataformas, avaliação, países e classificação etária
 - **Recomendações de Filmes Similares** baseadas na sua seleção
-- **Tradução Automática de Sinopse** para português
 - **Design Totalmente Responsivo**
 - **Links Diretos** para (algumas) plataformas de streaming
 
@@ -37,7 +36,6 @@ Popcorn Roulette é uma aplicação web que te ajuda a descobrir filmes de forma
 
 #### Fonte de Dados
 - **The Movie Database (TMDB)** - API de dados de filmes ([themoviedb.org](https://www.themoviedb.org/))
-- **MyMemory Translation API** - Serviço gratuito de tradução para sinopses
 
 ### 📋 Pré-requisitos
 
@@ -92,7 +90,6 @@ Este projeto é para fins educacionais. Os dados de filmes são fornecidos por [
 ### 🙏 Agradecimentos
 
 - Dados de filmes do [The Movie Database (TMDB)](https://www.themoviedb.org/)
-- Tradução alimentada pela [MyMemory Translation API](https://mymemory.translated.net/)
 
 ---
 
@@ -109,7 +106,6 @@ Popcorn Roulette is a web application that helps you discover movies in a fun an
 - **Random Movie Selection** with customizable filters
 - **Advanced Filters**: genres, year range, duration, platforms, rating, countries, and age rating
 - **Similar Movie Recommendations** based on your selection
-- **Automatic Synopsis Translation** to Portuguese
 - **Fully Responsive Design**
 - **Direct Links** to (some) streaming platforms
 
@@ -131,7 +127,6 @@ Popcorn Roulette is a web application that helps you discover movies in a fun an
 
 #### Data Source
 - **The Movie Database (TMDB)** - Movie data API ([themoviedb.org](https://www.themoviedb.org/))
-- **MyMemory Translation API** - Free translation service for movie synopses
 
 ### 📋 Prerequisites
 
@@ -186,7 +181,6 @@ This project is for educational purposes. Movie data is provided by [The Movie D
 ### 🙏 Acknowledgments
 
 - Movie data from [The Movie Database (TMDB)](https://www.themoviedb.org/)
-- Translation powered by [MyMemory Translation API](https://mymemory.translated.net/)
 
 ---
 

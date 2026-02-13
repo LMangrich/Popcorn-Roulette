@@ -15,10 +15,8 @@ export type { FilterState };
 export function FilterSection({ filters, setFilters }: FilterSectionProps) {
   const hasFilters =
     filters.genres.length > 0 ||
-    filters.yearRange.min !== 1940 ||
-    filters.yearRange.max !== 2026 ||
-    filters.durationRange.min !== 0 ||
-    filters.durationRange.max !== 999 ||
+    filters.yearRanges.length > 0 ||
+    filters.durationRanges.length > 0 ||
     filters.platforms.length > 0 ||
     filters.minRating > 6 ||
     filters.languages.length > 0 ||
@@ -27,8 +25,8 @@ export function FilterSection({ filters, setFilters }: FilterSectionProps) {
   const clearFilters = () => {
     setFilters({
       genres: [],
-      yearRange: { min: 1940, max: 2026 },
-      durationRange: { min: 0, max: 999 },
+      yearRanges: [],
+      durationRanges: [],
       platforms: [],
       minRating: 6,
       languages: [],
@@ -52,14 +50,6 @@ export function FilterSection({ filters, setFilters }: FilterSectionProps) {
   ) => {
     const array = filters[key] as unknown[];
     updateFilter(key, toggleArrayFilter(array, item) as FilterState[T]);
-  };
-
-  const setRange = (
-    key: "yearRange" | "durationRange",
-    min: number,
-    max: number
-  ) => {
-    updateFilter(key, { min, max });
   };
 
   return (
@@ -89,7 +79,7 @@ export function FilterSection({ filters, setFilters }: FilterSectionProps) {
           icon={panel.icon}
           defaultOpen={panel.defaultOpen}
         >
-          {panel.content(filters, updateFilter, toggleInArray, setRange)}
+          {panel.content(filters, updateFilter, toggleInArray)}
         </FilterPanel>
       ))}
 
@@ -117,24 +107,24 @@ export function FilterSection({ filters, setFilters }: FilterSectionProps) {
                 />
               </Badge>
             )}
-            {(filters.yearRange.min !== 1940 || filters.yearRange.max !== 2026) && (
-              <Badge className="text-xs bg-card-muted border-filter-line">
-                {filters.yearRange.min}-{filters.yearRange.max}
+            {filters.yearRanges.map((label) => (
+              <Badge key={label} className="text-xs bg-card-muted border-filter-line">
+                {label}
                 <X
                   className="w-3 h-3 ml-1 cursor-pointer"
-                  onClick={() => updateFilter("yearRange", { min: 1940, max: 2026 })}
+                  onClick={() => toggleInArray("yearRanges", label)}
                 />
               </Badge>
-            )}
-            {(filters.durationRange.min !== 0 || filters.durationRange.max !== 999) && (
-              <Badge className="text-xs bg-card-muted border-filter-line">
-                {filters.durationRange.min}-{filters.durationRange.max}m
+            ))}
+            {filters.durationRanges.map((label) => (
+              <Badge key={label} className="text-xs bg-card-muted border-filter-line">
+                {label}
                 <X
                   className="w-3 h-3 ml-1 cursor-pointer"
-                  onClick={() => updateFilter("durationRange", { min: 0, max: 999 })}
+                  onClick={() => toggleInArray("durationRanges", label)}
                 />
               </Badge>
-            )}
+            ))}
             {filters.platforms.map((p) => (
               <Badge key={p} className="text-xs bg-card-muted border-filter-line">
                 {p}

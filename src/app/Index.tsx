@@ -9,8 +9,8 @@ import { Header } from "./home/components/Header";
 
 const initialFilters: FilterState = {
   genres: [],
-  yearRange: { min: 1940, max: 2026 },
-  durationRange: { min: 0, max: 999 },
+  yearRanges: [],
+  durationRanges: [],
   platforms: [],
   minRating: 6,
   languages: [],

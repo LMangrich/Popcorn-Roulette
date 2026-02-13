@@ -32,8 +32,7 @@ interface FilterPanelConfig {
     toggleInArray: <T extends keyof FilterState>(
       key: T,
       item: FilterState[T] extends Array<infer U> ? U : never
-    ) => void,
-    setRange: (key: "yearRange" | "durationRange", min: number, max: number) => void
+    ) => void
   ) => React.ReactNode;
 }
 
@@ -91,17 +90,20 @@ export const filterPanelsConfig: FilterPanelConfig[] = [
   {
     title: "Ano de Lançamento",
     icon: <Calendar className="w-4 h-4" />,
-    content: (filters, _updateFilter, _toggleInArray, setRange) => (
+    content: (filters, updateFilter) => (
       <div className="flex flex-wrap gap-2">
         {yearRanges.map((range) => (
           <FilterChip
             key={range.label}
             label={range.label}
-            isActive={
-              filters.yearRange.min === range.min &&
-              filters.yearRange.max === range.max
-            }
-            onClick={() => setRange("yearRange", range.min, range.max)}
+            isActive={filters.yearRanges.includes(range.label)}
+            onClick={() => {
+              if (filters.yearRanges.includes(range.label)) {
+                updateFilter("yearRanges", []);
+              } else {
+                updateFilter("yearRanges", [range.label]);
+              }
+            }}
           />
         ))}
       </div>
@@ -110,17 +112,20 @@ export const filterPanelsConfig: FilterPanelConfig[] = [
   {
     title: "Duração",
     icon: <Clock className="w-4 h-4" />,
-    content: (filters, _updateFilter, _toggleInArray, setRange) => (
+    content: (filters, updateFilter) => (
       <div className="flex flex-wrap gap-2">
         {durationRanges.map((range) => (
           <FilterChip
             key={range.label}
             label={range.label}
-            isActive={
-              filters.durationRange.min === range.min &&
-              filters.durationRange.max === range.max
-            }
-            onClick={() => setRange("durationRange", range.min, range.max)}
+            isActive={filters.durationRanges.includes(range.label)}
+            onClick={() => {
+              if (filters.durationRanges.includes(range.label)) {
+                updateFilter("durationRanges", []);
+              } else {
+                updateFilter("durationRanges", [range.label]);
+              }
+            }}
           />
         ))}
       </div>
