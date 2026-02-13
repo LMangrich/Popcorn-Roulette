@@ -17,7 +17,7 @@ export type MovieFilters = {
 export type Movie = {
   id: number;
   title: string;
-  title_pt_br: string;
+  titlePtBr: string;
   countries: string[];
   ageRating: string;
   genres: string[];
@@ -84,7 +84,8 @@ class ApiClient {
       throw new Error(`Failed to fetch random movie: ${response.statusText}`);
     }
 
-    return response.json();
+    const movie = await response.json();
+    return movie;
   }
 
   async getAvailableCount(filters: MovieFilters): Promise<{ total: number; filters: MovieFilters }> {
